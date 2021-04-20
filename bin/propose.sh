@@ -12,7 +12,7 @@ propose_main(){
     local pwd_dir
     local keyword
 
-    pwd_dir=$(basename $(pwd))
+    propose_pwd_dir
 
     echo "(load Proposer scripts...)"
     echo
@@ -44,6 +44,14 @@ propose_main(){
                 ;;
         esac
     done
+}
+
+propose_pwd_dir(){
+    if [ -n "$APP_ROOT" ]; then
+        pwd_dir=$(basename $APP_ROOT)
+    else
+        pwd_dir=$(basename $(pwd))
+    fi
 }
 
 propose_load_rc(){
