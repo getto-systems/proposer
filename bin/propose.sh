@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PROPOSE_HELP=$(cat <<HELP_MESSAGE
+PROPOSE_HELP=$(cat <<HELP_MESSAGE
 You can invoke various commands by specifying keywords.
 
 h | help        -> this message
