@@ -24,7 +24,7 @@ propose_main(){
     echo "To show help message, type '?', 'h' or 'help'."
     echo
 
-    trap : INT
+    trap propose_trap_int INT
     while [ true ]; do
         read -p "${pwd_dir} > " keyword
 
@@ -44,6 +44,9 @@ propose_main(){
                 ;;
         esac
     done
+}
+propose_trap_int(){
+    continue
 }
 
 propose_pwd_dir(){
