@@ -8,13 +8,18 @@ propose -> load proposer rc
 HELP_MESSAGE
 )
 
-propose_load_rc(){
+propose_load_home_rc(){
     local rc_file
     rc_file=.config/proposer/rc.sh
 
     if [ -f "$HOME/${rc_file}" ]; then
         source "$HOME/${rc_file}"
     fi
+}
+propose_load_rc(){
+    local rc_file
+    rc_file=.config/proposer/rc.sh
+
     if [ -n "$APP_ROOT" ]; then
         if [ -f "$APP_ROOT/${rc_file}" ]; then
             source "$APP_ROOT/${rc_file}"
@@ -50,6 +55,8 @@ propose_zle_register(){
 
     zle -N propose_invoke
     bindkey "${key}" propose_invoke
+
+    propose_load_home_rc
 
     echo "the Propose widget registered."
     echo "To invoke action, type ${key}."
